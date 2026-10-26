@@ -111,7 +111,7 @@ html.en [data-kh]{display:none}html.en [data-en]{display:revert}
 .it{position:relative;padding:0 0 28px;opacity:.35;transition:opacity .6s}
 .it::before{content:"";position:absolute;left:-36px;top:.9em;width:12px;height:12px;border-radius:50%;background:var(--deep);border:2px solid #9c7124;transition:.6s}
 .it.on{opacity:1}.it.on::before{background:#fff;box-shadow:0 0 14px #fff9;border-color:#fff}
-.it time{display:block;font:600 clamp(18px,5vw,22px) Moul;color:#fff}.it p{font:300 clamp(14px,3.8vw,16px)/1.9 "Kantumruy Pro";color:#efe6c6}
+.it time small{font-size:.68em;margin-left:.15em}.it time{display:block;font:600 clamp(18px,5vw,22px) Moul;color:#fff}.it p{font:300 clamp(14px,3.8vw,16px)/1.9 "Kantumruy Pro";color:#efe6c6}
 .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
 .btn{all:unset;cursor:pointer;font:600 14px "Kantumruy Pro";padding:11px 20px;border-radius:99px;border:1px solid #e8dcae;color:#fff;text-align:center}
 .btn.p{background:linear-gradient(110deg,#9c7124,#e8dcae,#9c7124);color:#2a2f16;border-color:transparent}
@@ -156,12 +156,27 @@ footer{padding:22px 16px calc(26px + env(safe-area-inset-bottom,0px));text-align
 #seal{filter:drop-shadow(0 7px 6px rgba(0,0,0,.55))}
 #rig{transform-style:flat;perspective:1100px;perspective-origin:50% 25%}
 
+
+/* names on the card */
+#card .cn{margin:clamp(2px,1.2vw,8px) 0 0;text-align:center;white-space:nowrap;color:var(--deep);font:400 calc(min(88vw,460px)*.058) Moulpali;line-height:1.9}
+#card .cn i{font:italic 400 .8em "Cormorant Garamond",serif;color:#9c7124;padding:0 .12em}
+#card .cne{font:italic 600 calc(min(88vw,460px)*.062) "Cormorant Garamond",serif;line-height:1.5;letter-spacing:.04em}
+/* music button */
+#mus{all:unset;box-sizing:border-box;position:relative;cursor:pointer;border:1px solid #9c7124;border-radius:99px;padding:6px 10px;line-height:0;display:inline-flex;align-items:center}
+#mus.off::after{content:"";position:absolute;left:22%;right:22%;top:50%;height:1.6px;background:currentColor;transform:rotate(-38deg)}
+#mus.off svg{opacity:.55}
+#bar .rt{display:flex;gap:8px;align-items:center}
 /* guest name */
+#env .ttl b[data-en]{display:none}html.en #env .ttl b[data-en]{display:block}
 #env .ttl .eg{display:block;font:400 clamp(20px,6vw,30px) Moulpali;line-height:1.9;margin-top:6px;overflow-wrap:anywhere}#env .ttl .eg:empty{display:none}
 #guest{position:absolute;left:0;right:0;z-index:6;top:calc(50% + min(88vw,460px)/3 + 26px);display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 24px;transition:opacity .4s}
+#guest{transition:opacity .4s,top .3s}
+#env.typing #guest{top:30%}
+#env.typing #stage{opacity:.12!important;transition:opacity .3s}
+#env.typing .ttl,#env.typing #hint{opacity:0!important;transition:opacity .2s}
 #guest label{font:italic 400 15px "Cormorant Garamond";color:#e8dcae;letter-spacing:.06em}
 #guest label.km{font:300 13px "Kantumruy Pro";letter-spacing:0;line-height:1.8}
-#gin{all:unset;box-sizing:border-box;width:min(78vw,320px);text-align:center;font:400 16px "Kantumruy Pro",sans-serif;line-height:1.9;color:#fff;padding:6px 18px;border:1px solid #9c7124;border-radius:99px;background:rgba(18,20,8,.45);caret-color:#fbefc0;transition:border-color .3s,box-shadow .3s}
+#gin{-webkit-appearance:none;appearance:none;outline:0;margin:0;box-sizing:border-box;width:min(78vw,320px);text-align:center;font:400 16px "Kantumruy Pro",sans-serif;line-height:1.9;color:#fff;padding:6px 18px;border:1px solid #9c7124;border-radius:99px;background:rgba(18,20,8,.55);caret-color:#fbefc0;-webkit-user-select:text;user-select:text;pointer-events:auto;touch-action:manipulation;transition:border-color .3s,box-shadow .3s}
 #gin::placeholder{color:#e8dcae99}
 #gin:focus{border-color:#fbefc0;box-shadow:0 0 0 3px #d9b15a33}
 #cover .gn{font:400 clamp(20px,4.6svh,30px) Moulpali;line-height:1.9;max-width:90%;overflow-wrap:anywhere;margin:2px 0}
@@ -178,7 +193,9 @@ footer{padding:22px 16px calc(26px + env(safe-area-inset-bottom,0px));text-align
 <symbol id="bf" viewBox="0 0 40 30"><g fill="url(#gf)"><path d="M20 15C14 2 2 2 3 11C4 18 12 18 20 15Z"/><path d="M20 15C26 2 38 2 37 11C36 18 28 18 20 15Z"/><path d="M20 15C12 20 6 28 12 28C17 28 19 22 20 15Z"/><path d="M20 15C28 20 34 28 28 28C23 28 21 22 20 15Z"/></g></symbol>
 </defs></svg>
 
-<div id="bar"><span class="mini foil" aria-label="ស &amp; ម">ស&amp;ម</span><button id="lang" aria-label="Language">EN</button></div>
+<div id="bar"><span class="mini foil" aria-label="ស &amp; ម">ស&amp;ម</span><div class="rt"><button id="mus" class="off" aria-label="Music" aria-pressed="false"><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17V5l10-2v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="17" r="3" fill="currentColor"/><circle cx="16.5" cy="15" r="3" fill="currentColor"/></svg></button><button id="lang" aria-label="Language">EN</button></div></div>
+<audio id="bgm" src="song.mp3" loop preload="none" playsinline></audio>
+<div id="ytwrap" aria-hidden="true" style="position:fixed;left:-9999px;top:0;width:200px;height:200px;pointer-events:none"><div id="ytp"></div></div>
 
 <!-- COVER -->
 <main id="cover">
@@ -198,11 +215,11 @@ footer{padding:22px 16px calc(26px + env(safe-area-inset-bottom,0px));text-align
 
 <!-- ENVELOPE -->
 <section id="env"><div id="envbg"></div>
- <div class="ttl"><b class="km foil" data-kh>សិរីសួស្តីអាពាហ៍ពិពាហ៍</b><b class="foil" data-en style="font-family:'Cormorant Garamond'">The Wedding Invitation</b><i>The Wedding Invitation</i><span class="eg foil" id="egname"></span></div>
+ <div class="ttl"><b class="km foil" data-kh>សិរីសួស្តីអាពាហ៍ពិពាហ៍</b><b class="foil" data-en style="font-family:'Cormorant Garamond'">The Wedding Invitation</b><i data-kh>The Wedding Invitation</i><span class="eg foil" id="egname"></span></div>
  <div id="stage"><div id="rig">
   <div class="p" id="back"><div class="grain"></div></div>
   <div id="card"><div class="in"></div><div style="position:relative">
-    <div style="width:min(54%,200px);margin:0 auto"><div class="nl " role="img" aria-label="ស &amp; ម"><svg class="nl-art" viewBox="0 0 200 120" aria-hidden="true" focusable="false"><g class="nl-cr"><use href="#crest" x="84" y="0" width="32" height="20"/></g><path class="nl-sw" d="M10 94C38 104 72 88 95 65C74 83 42 94 10 94Z" fill="url(#gf)"/><circle class="nl-sw" cx="10.5" cy="94" r="1.8" fill="url(#gf)"/><path class="nl-sw" d="M105 59C128 38 160 30 190 36C160 38 128 48 105 59Z" fill="url(#gf)"/><circle class="nl-sw" cx="189.5" cy="36" r="1.8" fill="url(#gf)"/><path class="nl-h" d="M100 70C88 60 91 52 97 53.5C99.5 54.2 100 56.5 100 58C100 56.5 100.5 54.2 103 53.5C109 52 112 60 100 70Z" fill="url(#gf)"/><g class="nl-bf"><use href="#bf" x="146" y="8" width="30" height="22" transform="rotate(-12 161 19)"/></g></svg><span class="nl-a foil">ស</span><span class="nl-b foil">ម</span></div></div></div><div class="grain"></div></div>
+    <div style="width:min(54%,200px);margin:0 auto"><div class="nl " role="img" aria-label="ស &amp; ម"><svg class="nl-art" viewBox="0 0 200 120" aria-hidden="true" focusable="false"><g class="nl-cr"><use href="#crest" x="84" y="0" width="32" height="20"/></g><path class="nl-sw" d="M10 94C38 104 72 88 95 65C74 83 42 94 10 94Z" fill="url(#gf)"/><circle class="nl-sw" cx="10.5" cy="94" r="1.8" fill="url(#gf)"/><path class="nl-sw" d="M105 59C128 38 160 30 190 36C160 38 128 48 105 59Z" fill="url(#gf)"/><circle class="nl-sw" cx="189.5" cy="36" r="1.8" fill="url(#gf)"/><path class="nl-h" d="M100 70C88 60 91 52 97 53.5C99.5 54.2 100 56.5 100 58C100 56.5 100.5 54.2 103 53.5C109 52 112 60 100 70Z" fill="url(#gf)"/><g class="nl-bf"><use href="#bf" x="146" y="8" width="30" height="22" transform="rotate(-12 161 19)"/></g></svg><span class="nl-a foil">ស</span><span class="nl-b foil">ម</span></div></div><p class="cn km" data-kh>សុយាត្រា <i>&amp;</i> ម្ទេសទុំ</p><p class="cn cne en" data-en>Soyeatra <i>&amp;</i> Mtestum</p></div><div class="grain"></div></div>
   <div class="p" id="pocket"><div class="pw"><div class="pn pl"></div></div><div class="pw w2"><div class="pn pr"></div></div><div class="pw w3"><div class="pn pb"></div></div><svg class="fold" viewBox="0 0 100 66.67" preserveAspectRatio="none" aria-hidden="true"><path d="M0 66.67L50 33.4L100 66.67" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1" vector-effect="non-scaling-stroke"/><path d="M0 0L48.6 33.6M100 0L51.4 33.6" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></div>
   <div id="fsh"></div>
   <div id="flap">
@@ -246,16 +263,16 @@ footer{padding:22px 16px calc(26px + env(safe-area-inset-bottom,0px));text-align
 </section>
 
 <section class="sec b" id="prog">
- <h2 class="foil km" data-kh>កម្មវិធី</h2><h2 class="foil" data-en style="font-family:'Cormorant Garamond'">Programme</h2><svg class="rule" viewBox="0 0 200 14"><path d="M4 7H84M116 7H196" stroke="url(#gf)" stroke-width="1.2" fill="none"/><use href="#crest" x="82" y="0" width="36" height="14"/></svg>
+ <h2 class="foil km" data-kh>របៀបវារៈកម្មវិធី</h2><h2 class="foil" data-en style="font-family:'Cormorant Garamond'">Order of Ceremony</h2><svg class="rule" viewBox="0 0 200 14"><path d="M4 7H84M116 7H196" stroke="url(#gf)" stroke-width="1.2" fill="none"/><use href="#crest" x="82" y="0" width="36" height="14"/></svg>
  <div class="tl km" id="tl"><div class="th"><i></i></div>
-  <div class="it"><time>៦:៣០</time><p>ជួបជុំភ្ញៀវកិត្តិយសរៀបចំពិធីហែជំនូន</p></div>
-  <div class="it"><time>៧:០០</time><p>ពិធីហែជំនូន (ហែកំណត់) ចូលរោងជ័យ</p></div>
-  <div class="it"><time>៧:៤៥</time><p>ពិធីរៀបរាប់ផ្លែឈើសែនព្រេន</p></div>
-  <div class="it"><time>៨:៣០</time><p>ពិធីសូត្រមន្ត</p></div>
-  <div class="it"><time>៩:២៧</time><p>ពិធីកាត់សក់បង្កក់សិរីកូនប្រុសកូនស្រី</p></div>
-  <div class="it"><time>១១:៣០</time><p>ពិធីសំពះផ្ទឹម បង្វិលពពិល សែនចងដៃ</p></div>
-  <div class="it"><time>១២:០០</time><p>អញ្ជើញភ្ញៀវកិត្តិយសពិសារអាហារថ្ងៃត្រង់</p></div>
-  <div class="it"><time>៥:០០ ល្ងាច</time><p>អញ្ជើញភ្ញៀវកិត្តិយសពិសារភោជនាហារ</p></div></div>
+  <div class="it"><time>៦:៣០ <small>ព្រឹក</small></time><p>ជួបជុំភ្ញៀវកិត្តិយសរៀបចំពិធីហែជំនូន</p></div>
+  <div class="it"><time>៧:០០ <small>ព្រឹក</small></time><p>ពិធីហែជំនូន (ហែកំណត់) ចូលរោងជ័យ</p></div>
+  <div class="it"><time>៧:៤៥ <small>ព្រឹក</small></time><p>ពិធីរៀបរាប់ផ្លែឈើសែនព្រេនដូនតា</p></div>
+  <div class="it"><time>៨:៣០ <small>ព្រឹក</small></time><p>ពិធីសូត្រមន្ត</p></div>
+  <div class="it"><time>៩:២៧ <small>ព្រឹក</small></time><p>ពិធីកាត់សក់បង្កក់សិរីកូនប្រុសកូនស្រី</p></div>
+  <div class="it"><time>១១:៣០ <small>ព្រឹក</small></time><p>ពិធីសំពះផ្ទឹម បង្វិលពពិល សែនចងដៃ</p></div>
+  <div class="it"><time>១២:០០ <small>ថ្ងៃត្រង់</small></time><p>អញ្ជើញភ្ញៀវកិត្តិយសពិសារអាហារថ្ងៃត្រង់</p></div>
+  <div class="it"><time>៥:០០ <small>ល្ងាច</small></time><p>អញ្ជើញភ្ញៀវកិត្តិយសពិសារភោជនាហារ</p></div></div>
 </section>
 
 <section class="sec a" id="gallery">
@@ -341,7 +358,7 @@ function coverIn(){
  $('#bar').classList.add('on');
 }
 function open(){
- if(opened)return;opened=true;float.kill();$('#hint').style.opacity=0;$('#guest').style.opacity=0;$('#guest').style.pointerEvents='none';$('#gin').blur();
+ if(opened)return;opened=true;startMusic();float.kill();$('#hint').style.opacity=0;$('#guest').style.opacity=0;$('#guest').style.pointerEvents='none';$('#gin').blur();
  gsap.to(['#stage','#rig'],{rotationX:0,rotationY:0,rotateX:0,rotateY:0,y:0,duration:.6});
  var flap='#flap',tl=gsap.timeline({defaults:{ease:'sine.inOut'}});
  if(reduce)tl.timeScale(4);
@@ -373,9 +390,63 @@ $('#stage').addEventListener('click',open);
  try{var q=new URLSearchParams(location.search),p=q.get('name')||q.get('guest');if(p)gin.value=p.slice(0,60)}catch(e){}
  function sync(){var v=gin.value.trim();gn.textContent=v;$('#egname').textContent=v}
  gin.addEventListener('input',sync);sync();
+ var env=$('#env');gin.addEventListener('focus',function(){env.classList.add('typing')});gin.addEventListener('blur',function(){env.classList.remove('typing')});
+ $('#guest').addEventListener('pointerdown',function(e){e.stopPropagation()});
  gin.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();sync();open()}});
  gsap.from('#guest',{opacity:0,y:14,duration:1.1,delay:.9,ease:'power3.out'});
 })();
+// background music: song.mp3 (next to index.html) plays when the envelope opens; if it is missing, fall back to the YouTube song
+var YT_ID='Mn_qLC7_ueA',mus=$('#mus'),bgm=$('#bgm'),yt=null,ytReady=false,ytLoading=false,useAudio=true,wantMusic=false,playing=false;
+function setMus(on){playing=on;mus.classList.toggle('off',!on);mus.setAttribute('aria-pressed',on?'true':'false')}
+function fade(set,to){var o={v:0};set(0);gsap.to(o,{v:to,duration:2.5,onUpdate:function(){set(o.v)}})}
+bgm.addEventListener('play',function(){if(useAudio)setMus(true)});
+bgm.addEventListener('pause',function(){if(useAudio)setMus(false)});
+bgm.addEventListener('error',toYT);
+function playNow(){
+ if(useAudio){
+  bgm.volume=0;var pr=bgm.play();
+  if(pr&&pr.then)pr.then(function(){fade(function(v){bgm.volume=v},.7)}).catch(function(e){if(!e||e.name!=='NotAllowedError')toYT();else setMus(false)});
+  return;
+ }
+ try{yt.setVolume(0);yt.playVideo();fade(function(v){yt.setVolume(Math.round(v))},70)}catch(e){}
+}
+function startMusic(){if(wantMusic)return;wantMusic=true;if(useAudio||ytReady)playNow()}
+function toYT(){
+ if(!useAudio)return;useAudio=false;setMus(false);
+ if(ytLoading)return;ytLoading=true;
+ var t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';t.async=true;
+ t.onerror=function(){mus.style.display='none'};document.head.appendChild(t);
+}
+window.onYouTubeIframeAPIReady=function(){
+ yt=new YT.Player('ytp',{width:'200',height:'200',videoId:YT_ID,
+  playerVars:{playsinline:1,controls:0,rel:0,disablekb:1,fs:0,iv_load_policy:3},
+  events:{
+   onReady:function(){ytReady=true;if(wantMusic&&!useAudio)playNow()},
+   onStateChange:function(e){
+    if(e.data===0){yt.seekTo(0);yt.playVideo()}   // loop
+    else if(e.data===1)setMus(true);
+    else if(e.data===2)setMus(false);
+   },
+   onError:function(){mus.style.display='none'}
+  }});
+};
+mus.addEventListener('click',function(){
+ if(useAudio){
+  if(bgm.paused){wantMusic=true;bgm.volume=.7;var pr=bgm.play();if(pr&&pr.catch)pr.catch(function(e){if(e&&e.name!=='NotAllowedError')toYT()})}
+  else{wantMusic=false;bgm.pause()}
+  return;
+ }
+ if(!ytReady)return;
+ if(playing){wantMusic=false;yt.pauseVideo()}
+ else{wantMusic=true;yt.setVolume(70);yt.playVideo()}
+});
+document.addEventListener('visibilitychange',function(){
+ if(useAudio){if(document.hidden){if(!bgm.paused){bgm._r=1;bgm.pause()}}else if(bgm._r){bgm._r=0;var pr=bgm.play();if(pr&&pr.catch)pr.catch(function(){})}return}
+ if(!ytReady)return;
+ if(document.hidden){if(playing){yt._r=1;yt.pauseVideo()}}
+ else if(yt._r){yt._r=0;yt.playVideo()}
+});
+
 // name reveal on envelope screen
 gsap.from('#env .ttl',{opacity:0,y:-10,duration:1.2,delay:.2});
 gsap.from('#stage',{opacity:0,y:30,duration:1.2,delay:.4,ease:'power3.out'});
